@@ -33,18 +33,21 @@ vows.describe('Safe Browse API')
             topic: createSafeBrowseObj( apiKey, client ),
 
             'URI is undefined/null/empty': function ( topic ) {
+                var error = 'Specified URL is not a valid one';
                 assert.throws( function () {
                     topic.lookup();
                 },
-                /Specified URL is not a valid one/ );
+                new RegExp(error) );
             },
 
             'URI is not as per RFC-3986': function ( topic ) {
+                var error = 'Specified URL is not a valid one';
+
                 assert.throws( function () {
                     topic.lookup( '/invalid/url/scheme' );
                 }, 
 
-                /Specified URL is not a valid one/ );
+                new RegExp(error) );
             },
 
             'None of the URLs are valid for multiple URL verification': function ( topic ) {
@@ -64,7 +67,6 @@ vows.describe('Safe Browse API')
                 var error = 'Total number of URLs has exceeded the maximum allowed limit of 500';
                 assert.throws( function () {
                     var urls = Array(600);
-                    assert.equal( urls.length, 600 );
                     topic.lookup( urls );
                 },
                 new RegExp(error)
