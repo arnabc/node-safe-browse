@@ -115,15 +115,15 @@ vows.describe('Safe Browse API')
             },
 
             'should be ok': function ( error, result ) {
-                assert.equal( 'ok', result.data['http://quadnode.com'] );
+                assert.equal( result.data['http://quadnode.com'], 'ok' );
             },
 
             'should be malware': function ( error, result ) {
-                assert.equal( 'malware', result.data['http://gumblar.cn'] );
+                assert.equal( result.data['http://gumblar.cn'], 'malware' );
             },
 
             'should be 200': function ( error, result ) {
-                assert.equal( 200, result.statusCode );
+                assert.equal( result.statusCode, 200 );
             }
         },
 
@@ -131,7 +131,7 @@ vows.describe('Safe Browse API')
 
             topic: function () {
                 var sf = createSafeBrowseObj( apiKey, client );
-                sf.lookup( mixedUrls, this.callback );
+                sf.lookup( goodUrls, this.callback );
             },
 
             'should be null': function ( error, result ) {
@@ -143,11 +143,11 @@ vows.describe('Safe Browse API')
             },
 
             'should be ok': function ( error, result ) {
-                assert.equal( 'ok', result.data['http://twitter.com'] );
+                assert.equal( result.data['http://twitter.com'], 'ok' );
             },
 
             'should be 204': function ( error, result ) {
-                assert.equal( 204, result.statusCode );
+                assert.equal( result.statusCode, 204 );
             }
         },
 
@@ -166,11 +166,11 @@ vows.describe('Safe Browse API')
             },
 
             'should be ok': function ( error, result ) {
-                assert.equal( 'malware', result.data['http://twitter.com'] );
+                assert.equal( result.data['http://gumblar.cn'], 'malware' );
             },
 
             'should be 200': function ( error, result ) {
-                assert.equal( 200, result.statusCode );
+                assert.equal( result.statusCode, 200 );
             }
         },
 
