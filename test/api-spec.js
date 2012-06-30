@@ -11,7 +11,7 @@ var client = Config.client;
 
 // helper method to create the SafeBrowse object
 function createSafeBrowseObj( key, clientName ) {
-    return SafeBrowse( key, clientName );    
+    return SafeBrowse( key, clientName, { debug: false } );    
 }
 
 // Mixed URLs
@@ -36,6 +36,17 @@ var goodUrls = [
 
 vows.describe('Safe Browse API')
     .addBatch( {
+        'Should always insist on an API key to be specified': {
+            topic: [null, client],
+            'should generate error if no API key is specified': function ( topic ) {
+                var error = 'An API key is required to connect to the Google SafeBrowsing API';
+                assert.throws( function () {
+                    createSafeBrowseObj.apply( exports, topic );
+                },
+                new RegExp( error ) );
+            }
+        },
+
         'Should always identify the client app for sanity': {
             topic: [apiKey, null],
 
@@ -195,6 +206,10 @@ vows.describe('Safe Browse API')
             'should be 204': function ( error, result ) {
                 assert.equal( 204, result.statusCode );
             }
+        },
+
+        'Test SafeBrowsing API Response statucCodes': {
+            
         }
 
     } )

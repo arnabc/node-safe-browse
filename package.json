@@ -1,15 +1,24 @@
 {
-  "author": "Arnab Chakraborty <arnabc@webgyani.com> (http://webgyani.com)",
+  "author": "Arnab Chakraborty <arnabc@webgyani.com> (http://arnab.ch)",
   "name": "safe-browse",
   "description": "A Node.js module to verify whether a URL is safe(not a suspected phishing/malware distribution site) using Google Safe Browsing API",
   "version": "1.0.0",
+  "keywords": ["safe browse", "browse safe", "safe", "phishing", "malware"],
   "repository": {
-    "url": ""
+    "type": "git",
+    "url": "https://github.com/arnabc/node-safe-browse.git"
   },
   "main": "./lib/safe-browse.js",
   "engines": {
-    "node": ">=v0.5.0-pre"
+    "node": ">=v0.6.0"
   },
-  "dependencies": { "underscore": "latest" },
-  "devDependencies": {}
+  "dependencies": { 
+    "underscore": "latest",
+    "request": ">=2.9.203"
+  },
+  "devDependencies": {
+    "vows": ">=0.6.3"
+  },
+
+  "license": "MIT"
 }
