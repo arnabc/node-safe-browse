@@ -7,11 +7,10 @@ var vows = require('vows'),
 
 
 var apiKey = Config.apikey;
-var client = Config.client;
 
 // helper method to create the SafeBrowse object
-function createSafeBrowseObj( key, clientName ) {
-    return SafeBrowse( key, clientName, { debug: false } );    
+function createSafeBrowseObj( key ) {
+    return new SafeBrowse.Api( key, { debug: false } );    
 }
 
 // Mixed URLs
@@ -37,7 +36,7 @@ var goodUrls = [
 vows.describe('Safe Browse API')
     .addBatch( {
         'Should always insist on an API key to be specified': {
-            topic: [null, client],
+            topic: [null],
             'should generate error if no API key is specified': function ( topic ) {
                 var error = 'An API key is required to connect to the Google SafeBrowsing API';
                 assert.throws( function () {
@@ -47,21 +46,9 @@ vows.describe('Safe Browse API')
             }
         },
 
-        'Should always identify the client app for sanity': {
-            topic: [apiKey, null],
-
-            'should generate error if client identity not specified': function ( topic ) {
-                var error = 'Client name is required, it helps Google to indentify your Application';
-                assert.throws( function () {
-                    createSafeBrowseObj.apply( exports, topic );
-                }, 
-                new RegExp( error ) );
-            }
-        },
-
         'Should throw error if invalid URI/URIs provided': {
 
-            topic: createSafeBrowseObj( apiKey, client ),
+            topic: createSafeBrowseObj( apiKey ),
 
             'URI is undefined/null/empty': function ( topic ) {
                 var error = 'Specified URL is not a valid one';
@@ -109,7 +96,7 @@ vows.describe('Safe Browse API')
 
         'Test Multiple URLs with Mixed Content': {
             topic: function () {
-                var sf = createSafeBrowseObj( apiKey, client );
+                var sf = createSafeBrowseObj( apiKey );
                 sf.lookup( mixedUrls, this.callback );
             },
 
@@ -141,7 +128,7 @@ vows.describe('Safe Browse API')
         'Test all good URLs': {
 
             topic: function () {
-                var sf = createSafeBrowseObj( apiKey, client );
+                var sf = createSafeBrowseObj( apiKey );
                 sf.lookup( goodUrls, this.callback );
             },
 
@@ -164,7 +151,7 @@ vows.describe('Safe Browse API')
 
         'Test GET request using Bad URL': {
             topic: function () {
-                var sf = createSafeBrowseObj( apiKey, client );
+                var sf = createSafeBrowseObj( apiKey );
                 sf.lookup( 'http://gumblar.cn', this.callback );
             },
 
@@ -187,7 +174,7 @@ vows.describe('Safe Browse API')
 
         'Test GET request using Good URL': {
             topic: function () {
-                var sf = createSafeBrowseObj( apiKey, client );
+                var sf = createSafeBrowseObj( apiKey );
                 sf.lookup( 'http://twitter.com', this.callback );
             },
 
@@ -206,10 +193,6 @@ vows.describe('Safe Browse API')
             'should be 204': function ( error, result ) {
                 assert.equal( 204, result.statusCode );
             }
-        },
-
-        'Test SafeBrowsing API Response statucCodes': {
-            
         }
 
     } )
