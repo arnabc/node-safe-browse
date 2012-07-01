@@ -10,7 +10,7 @@ Install
 Using `npm`
 
 <pre>
-  npm install node-safe-browse
+  npm install safe-browse
 </pre>
 
 or from source
