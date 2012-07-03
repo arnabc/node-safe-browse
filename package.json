@@ -2,7 +2,7 @@
   "author": "Arnab Chakraborty <arnabc@webgyani.com> (http://arnab.ch)",
   "name": "safe-browse",
   "description": "A Node.js module to verify whether a URL is a malware or phishing website, using Google Safe Browsing API",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": ["safe browse", "browse safe", "safe", "phishing", "malware"],
   "repository": {
     "type": "git",
