@@ -71,7 +71,10 @@ api.lookup('http://google.com')
 
 // will have the output like below:
 {
-	'http://google.com': 'ok' // it could be anything like ok|malware|phishing|phishing,malware
+	statusCode: 204,
+	data: {
+		'http://google.com': 'ok' // it could be anything like ok|malware|phishing|phishing,malware
+	}
 }
 ```
 
@@ -84,8 +87,11 @@ api.lookup(['http://google.com', 'http://gumblar.cn'])
 
 // will have the output like below:
 {
-	'http://google.com': 'ok',
-	'http://gumblar.cn': 'malware'
+	statusCode: 200,
+	data: {
+		'http://google.com': 'ok',
+		'http://gumblar.cn': 'malware'
+	}
 }
 ```
 
