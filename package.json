@@ -16,7 +16,7 @@
   },
   "main": "./lib/safe-browse.js",
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=0.8.0"
   },
   "dependencies": {
     "underscore": "1.6.0",
