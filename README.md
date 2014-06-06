@@ -155,8 +155,9 @@ api.lookup('htp://www.example.com')
 	} );
 ```
 
+
 Testing
-________
+---------------
 
     $ SAFE_BROWSER_API_KEY='....' npm test
 
