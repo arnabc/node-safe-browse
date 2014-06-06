@@ -19,11 +19,11 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "underscore": "^1.6.0",
-    "request": "^2.36.0"
+    "underscore": "1.6.0",
+    "request": "2.36.0"
   },
   "devDependencies": {
-    "vows": "^0.7.0"
+    "vows": "0.7.0"
   },
   "scripts": {
     "test": "./node_modules/.bin/vows"
