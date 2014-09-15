@@ -2,15 +2,19 @@
 var vows = require('vows'),
     assert = require('assert'),
     EventEmitter = require('events').EventEmitter,
-    SafeBrowse = require('../lib/safe_browse'),
-    Config = require('./config');
+    SafeBrowse = require('../lib/safe_browse');
 
 
-var apiKey = Config.apikey;
+var KEY_NAME = 'SAFE_BROWSER_API_KEY';
+var apiKey = process.env[KEY_NAME];
+
+if (!apiKey){
+    throw new Error('Missing apiKey, please setup in enviroment with '+KEY_NAME);
+}
 
 // helper method to create the SafeBrowse object
 function createSafeBrowseObj( key ) {
-    return new SafeBrowse.Api( key, { debug: false } );    
+    return new SafeBrowse.Api( key, { debug: false } );
 }
 
 // Mixed URLs

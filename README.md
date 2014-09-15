@@ -1,3 +1,6 @@
+
+[![Build Status](https://travis-ci.org/sveisvei/node-safe-browse.png)](https://travis-ci.org/sveisvei/node-safe-browse)
+
 Node Safe Browse -- Utility module to check URLs against Google's SafeBrowsing Lookup API
 ================
 
@@ -151,6 +154,12 @@ api.lookup('htp://www.example.com')
 		console.log( error.statusCode ); // 401 - Not authorized
 	} );
 ```
+
+
+Testing
+---------------
+
+    $ SAFE_BROWSER_API_KEY='....' npm test
 
 About
 -----
