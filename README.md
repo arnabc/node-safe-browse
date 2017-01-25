@@ -1,30 +1,29 @@
 Node Safe Browse -- Utility module to check URLs against Google's SafeBrowsing Lookup API
 ================
 
-The SafeBrowsing Lookup API allows applications to check malicious URLs against Google's constantly updated list of malware and phishing websites/pages.
-
+The [SafeBrowsing Lookup API v3](https://developers.google.com/safe-browsing/v3/) allows applications to check malicious URLs against Google's constantly updated list of malware and phishing websites/pages.
 
 Install
 ---------
 
 Using `npm`
 
-<pre>
+```
   npm install safe-browse
-</pre>
+```
 
 or from source
 
-<pre>
+```
   git clone git://github.com/arnabc/node-safe-browse.git
   cd node-safe-browse
   npm link
-</pre>
+```
 
 Usage
 ----------
 
-In order to use the module you need to sign up for an `API_KEY` from Google [SafeBrowsing key signup](http://www.google.com/safebrowsing/key_signup.html).
+In order to use the module you need to sign up for an `API_KEY` at the [Google Developers Console](https://console.developers.google.com).
 
 
 ```javascript
@@ -56,7 +55,7 @@ api.lookup(['http://twitter.com', 'http://gumblar.cn'], function ( error, data )
 #### SafeBrowse Options
 
 * `appver` - Optional, the version number of the application, default is the version number of the `safe-browse` module.
-* `pvar` - Google SafeBrowsing API protocol version, you can change this if Google updates their protocol version number. The current version is `3.0`.
+* `pver` - Google SafeBrowsing API protocol version, you can change this if Google updates their protocol version number. The current version is `3.1` (but there is also a completely re-designed [v4](https://developers.google.com/safe-browsing/v4/)).
 * `debug` - Debug flag (Boolean), enabling this will output some helppful logging messages in `Console`.
 * `api` - The URL of the Google SafeBrowsing API, in case it changes you can use the new API url to initialize the module without changing anything in the module code.
 
